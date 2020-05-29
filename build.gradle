@@ -1,0 +1,48 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.8'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+repositories {
+    mavenCentral()
+    maven { url 'http://download.oracle.com/maven' }
+    mavenLocal()
+}
+
+javafx {
+    version = "13"
+    modules = [ 'javafx.controls' ]
+}
+
+
+mainClassName = 'example/MainFX'
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Gradle SocketFX2',
+                'Implementation-Version': version,
+                'Main-Class': 'example.MainFX'
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+
+    exclude 'META-INF/*.RSA', 'META-INF/*.SF','META-INF/*.DSA'
+}
+
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+
+    compile group: 'org.jpos', name: 'jpos', version: '2.1.0'
+}
+

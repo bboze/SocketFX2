@@ -1,0 +1,10 @@
+# files
+*.swp
+*.idea
+.env
+
+# folders
+/.gradle
+/.idea
+/build
+/out
