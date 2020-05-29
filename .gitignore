@@ -1,7 +1,4 @@
 # files
-*.swp
-*.idea
-.env
 
 # folders
 /.gradle
